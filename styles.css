@@ -78,7 +78,7 @@
   }
   
   /* Background Floating Shapes */
-  .background-shapes {
+.background-shapes {
     position: fixed;
     top: 0;
     left: 0;
@@ -88,54 +88,75 @@
     overflow: hidden;
   }
   
+  /* Animation for floating effect */
+  @keyframes float {
+    0% {
+      transform: translateY(0) scale(1) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.05) rotate(10deg);
+    }
+    100% {
+      transform: translateY(0) scale(1) rotate(0deg);
+    }
+  }
+  
+  /* Base Shape Styling */
   .shape {
     position: absolute;
-    opacity: 0.6;
-    animation: float 10s ease-in-out infinite;
+    opacity: 0.8;
+    animation: float 8s ease-in-out infinite;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   }
   
   /* Circle */
   .circle {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background-color: #ffa07a;
-    top: 20%;
+    background: radial-gradient(circle, #ffa07a, #ff6347);
+    top: 15%;
     left: 10%;
+    animation-delay: 0s;
   }
   
   /* Square */
   .square {
-    width: 120px;
-    height: 120px;
-    background-color: #ffd700;
-    top: 60%;
-    left: 70%;
+    width: 140px;
+    height: 140px;
+    background: linear-gradient(45deg, #ffd700, #ffa500);
+    top: 50%;
+    left: 75%;
+    animation-delay: 1.5s;
+    transform: rotate(10deg);
   }
   
   /* Triangle */
   .triangle {
     width: 0;
     height: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 100px solid #6a5acd;
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+    border-bottom: 120px solid #6a5acd;
     top: 40%;
-    left: 40%;
+    left: 45%;
+    animation-delay: 3s;
+    transform: rotate(-20deg);
   }
   
   /* Star */
   .star {
-    width: 0;
-    height: 0;
-    position: absolute;
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    border-bottom: 80px solid #ff4500;
-    transform: rotate(35deg);
-    top: 80%;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff4500, #ff6347);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    top: 75%;
     left: 20%;
+    animation-delay: 2s;
+    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3);
   }
+  
   
   /* Floating Animation */
   @keyframes float {
@@ -150,12 +171,12 @@
   /* Media Queries for Responsiveness */
   @media (max-width: 768px) {
     h1 {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
   
     #status span,
     #status button {
-      font-size: 1rem;
+      font-size: 0.5rem;
     }
   
     .cell {
@@ -183,8 +204,8 @@
     }
   
     .cell {
-      width: calc(20vw - 4px);
-      height: calc(20vw - 4px);
+      width: calc(10vw - 6px);
+      height: calc(10vw - 6px);
     }
   
     .circle,

@@ -14,12 +14,12 @@ function initializeGame() {
   grid = createGrid(rows, cols, mineCount);
   mineCounter = mineCount;
   timer = 0;
-  document.getElementById("mine-counter").textContent = `Mines: ${mineCount}`;
-  document.getElementById("timer").textContent = `Time: ${timer}s`;
+  document.getElementById("mine-counter").textContent = `🚩 Mines: ${mineCount}`;
+  document.getElementById("timer").textContent = `⏰ Time: ${timer}s`;
   clearInterval(interval);
   interval = setInterval(() => {
     timer++;
-    document.getElementById("timer").textContent = `Time: ${timer}s`;
+    document.getElementById("timer").textContent = `⏰ Time: ${timer}s`;
   }, 1000);
 
   for (let i = 0; i < rows; i++) {
@@ -94,12 +94,14 @@ function handleRightClick(event) {
   if (!cell.classList.contains("revealed")) {
     if (cell.classList.contains("flag")) {
       cell.classList.remove("flag");
+      cell.innerHTML = "";
       mineCounter++;
     } else {
       cell.classList.add("flag");
+      cell.innerHTML = "🚩"
       mineCounter--;
     }
-    document.getElementById("mine-counter").textContent = `Mines: ${mineCounter}`;
+    document.getElementById("mine-counter").textContent = `🚩 Mines: ${mineCounter}`;
   }
 }
 
@@ -117,7 +119,7 @@ function revealCell(row, col) {
       cell.style.backgroundColor = "#ff4500"; // Red color for bombs
     } else if (value > 0) {
       cell.textContent = value; // Show the number of adjacent mines
-      cell.style.backgroundColor = "blue"; // Light blue for number cells
+      cell.style.backgroundColor = "#FFB347"; // Light blue for number cells
     } else {
       // For empty cells (value === 0), change the background color
       cell.style.backgroundColor = "white"; // Light aqua color for empty cells
