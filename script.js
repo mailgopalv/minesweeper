@@ -105,21 +105,30 @@ function handleRightClick(event) {
 
 // Reveal a cell
 function revealCell(row, col) {
-  const cell = document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
-  if (!cell || cell.classList.contains("revealed")) return;
-
-  cell.classList.add("revealed");
-  const value = grid[row][col];
-  if (value > 0) {
-    cell.textContent = value;
-  } else if (value === 0) {
-    for (let i = -1; i <= 1; i++) {
-      for (let j = -1; j <= 1; j++) {
-        revealCell(row + i, col + j);
+    const cell = document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
+    if (!cell || cell.classList.contains("revealed")) return;
+  
+    cell.classList.add("revealed");
+  
+    const value = grid[row][col];
+  
+    if (value === "M") {
+      cell.innerHTML = "💣"; // Display bomb emoji
+      cell.style.backgroundColor = "#ff4500"; // Red color for bombs
+    } else if (value > 0) {
+      cell.textContent = value; // Show the number of adjacent mines
+      cell.style.backgroundColor = "blue"; // Light blue for number cells
+    } else {
+      // For empty cells (value === 0), change the background color
+      cell.style.backgroundColor = "white"; // Light aqua color for empty cells
+      // Reveal adjacent cells
+      for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+          revealCell(row + i, col + j);
+        }
       }
     }
   }
-}
 
 // Reveal all mines
 function revealMines() {
