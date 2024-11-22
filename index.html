@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" href="styles.css">
-<script src="script.js" defer></script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +7,24 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="game-wrapper">
-    <h1>Minesweeper for Kids 🎉</h1>
-    <div id="game-container">
-      <div id="status">
-        <span id="mine-counter">🚩 Mines: 10</span>
-        <button id="restart">🔄 Restart</button>
-        <span id="timer">⏰ Time: 0s</span>
-      </div>
-      <div id="grid"></div>
-    </div>
-    <div id="win-message" class="hidden">
-      🎉 You Win! 🎉
-    </div>
+  <div class="background-shapes">
+    <!-- Floating shapes -->
+    <div class="shape circle"></div>
+    <div class="shape square"></div>
+    <div class="shape triangle"></div>
+    <div class="shape star"></div>
   </div>
-  <script src="script.js"></script>
+
+  <h1>Minesweeper for Kids</h1>
+  <div id="game-container">
+    <div id="status">
+      <span id="mine-counter">💣 Mines: 10</span>
+      <button id="restart">🔄 Restart</button>
+      <span id="timer">⏱ Time: 0s</span>
+    </div>
+    <div id="grid"></div>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

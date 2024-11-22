@@ -128,6 +128,7 @@ function revealMines() {
       if (grid[i][j] === "M") {
         const cell = document.querySelector(`.cell[data-row="${i}"][data-col="${j}"]`);
         cell.classList.add("mine");
+        cell.innerHTML = "💣"; // Display a fun bomb icon
       }
     }
   }
