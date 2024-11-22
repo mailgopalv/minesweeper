@@ -1,0 +1,143 @@
+/* General Body */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #87CEEB, #FFD700);
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    overflow-x: hidden;
+  }
+  
+  h1 {
+    color: #FF4500;
+    font-size: 3em;
+    text-shadow: 3px 3px 5px #000;
+  }
+  
+  #game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Status Bar */
+  #status {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    background: #6A5ACD;
+    border-radius: 10px;
+    color: #FFF;
+    font-size: 1.2em;
+  }
+  
+  button {
+    background-color: #00BFFF;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+  }
+  
+  button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Grid Styling */
+  #grid {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    gap: 4px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .cell {
+    width: 50px;
+    height: 50px;
+    background: #FFD700;
+    border: 2px solid #000;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+    transition: transform 0.2s, background-color 0.3s;
+  }
+  
+  .cell:hover {
+    transform: scale(1.1);
+    background: #FFE4B5;
+  }
+  
+  /* Revealed Cell */
+  .cell.revealed {
+    background: #BDFCC9;
+    cursor: default;
+    animation: pop 0.2s ease-in-out;
+  }
+  
+  @keyframes pop {
+    0% {
+      transform: scale(0.9);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Mines and Flags */
+  .cell.mine::after {
+    content: "💣";
+    font-size: 1.5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .cell.flag::after {
+    content: "🚩";
+    font-size: 1.5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: wiggle 0.5s infinite;
+  }
+  
+  @keyframes wiggle {
+    0%, 100% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    25% {
+      transform: translate(-50%, -50%) rotate(-15deg);
+    }
+    50% {
+      transform: translate(-50%, -50%) rotate(15deg);
+    }
+  }
+  
+  /* Win Message */
+  #win-message {
+    font-size: 2.5em;
+    color: #32CD32;
+    text-shadow: 2px 2px 4px #000;
+    margin-top: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
